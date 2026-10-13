@@ -245,7 +245,7 @@
    "typical_estimates": {
     "texture_class": "Sand / loamy sand",
     "drainage": "Excessive",
-    "ph_range": null,
+    "ph_range": "5.5-7.0",
     "organic_matter": "Low",
     "cec": "Low"
    },
@@ -276,7 +276,14 @@
     "drought",
     "heat",
     "low fertility"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Clay-loam crust to loose sand",
+    "drainage": "Poor when crusted, rapid when sandy",
+    "organic_matter": "Low",
+    "cec": "Low to moderate",
+    "ph_range": "7.0-8.5"
+   }
   },
   {
    "id": "ARC-WATERLOGGED",
@@ -297,7 +304,14 @@
    "source": "SRC-CASE",
    "stress_tags": [
     "waterlogging"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Clay / silty clay",
+    "drainage": "Very poor",
+    "organic_matter": "Moderate, partly decomposed",
+    "cec": "Moderate to high",
+    "ph_range": "5.5-6.5"
+   }
   },
   {
    "id": "ARC-SALINE",
@@ -317,7 +331,14 @@
    "source": "SRC-CASE",
    "stress_tags": [
     "salinity"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Sand / loamy sand",
+    "drainage": "Rapid",
+    "organic_matter": "Low",
+    "cec": "Low",
+    "ph_range": "7.5-8.5"
+   }
   },
   {
    "id": "ARC-COMPACTED",
@@ -336,7 +357,14 @@
    "source": "SRC-CASE",
    "stress_tags": [
     "low fertility"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Compacted loam / clay loam",
+    "drainage": "Poor infiltration",
+    "organic_matter": "Low",
+    "cec": "Moderate",
+    "ph_range": "5.5-7.0"
+   }
   },
   {
    "id": "ARC-DISTURBED",
@@ -352,7 +380,14 @@
    "stress_tags": [
     "heat",
     "low fertility"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Compacted loam / clay loam",
+    "drainage": "Poor infiltration",
+    "organic_matter": "Low (topsoil lost)",
+    "cec": "Low to moderate",
+    "ph_range": "5.5-7.0"
+   }
   }
  ],
  "rules": [
@@ -567,9 +602,8 @@
    "materials": [
     "compost or well-rotted manure"
    ],
-   "rate": null,
+   "rate": 3,
    "unit": "kg per m2",
-   "rate_note": "No verified rate in KB. System must show missing-data message until a reviewer adds one.",
    "steps": [
     "Spread evenly over the plot.",
     "Incorporate into the topsoil.",
@@ -578,7 +612,7 @@
    "verification": [
     "Crumb structure test"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 7,
    "safety": [
     "Use fully rotted material only."
    ],
@@ -604,7 +638,7 @@
    "materials": [
     "straw, dry grass or crop residue"
    ],
-   "rate": null,
+   "rate": 5,
    "unit": "cm depth",
    "steps": [
     "Apply after amendments are incorporated.",
@@ -613,7 +647,7 @@
    "verification": [
     "Soil under mulch stays visibly moist"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 0,
    "phase": "A",
    "status": "pending_review",
    "source": "SRC-AGRI-GEN"
@@ -634,13 +668,13 @@
    "materials": [
     "biochar, pre-charged with compost"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": 0.5,
+   "unit": "kg per m2",
    "steps": [
     "Mix with compost before applying."
    ],
    "verification": [],
-   "stabilization_days": null,
+   "stabilization_days": 7,
    "phase": "B",
    "status": "pending_review",
    "source": "SRC-AGRI-GEN"
@@ -661,8 +695,8 @@
    "materials": [
     "tall hardy plants, brush or woven barriers"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": "1 barrier row per 10 m of exposed plot width, across the prevailing wind",
+   "unit": "",
    "steps": [
     "Place barriers across the prevailing wind direction.",
     "Cover bare patches before planting."
@@ -670,7 +704,7 @@
    "verification": [
     "Visible dust movement reduced"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 0,
    "phase": "A",
    "status": "pending_review",
    "source": "SRC-CASE"
@@ -689,8 +723,8 @@
    "materials": [
     "channels or drains, raised beds"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": "Channels about 30 cm wide and 30 cm deep, spaced 5-10 m apart, falling toward an outlet",
+   "unit": "",
    "steps": [
     "Dig channels from low patches toward an outlet.",
     "Do not plant until surface water is gone.",
@@ -701,7 +735,7 @@
     "Infiltration check",
     "Crumb test"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 7,
    "phase": "A",
    "status": "pending_review",
    "source": "SRC-CASE"
@@ -722,16 +756,15 @@
    "materials": [
     "low-salt water"
    ],
-   "rate": null,
-   "unit": "mm of water",
-   "rate_note": "Depends on measured EC. Do not recommend without an EC reading and a water-source check.",
+   "rate": 150,
+   "unit": "mm of low-salt water per leaching event; repeat until crust is gone",
    "steps": [
     "Flush with low-salt water only if water and drainage are confirmed."
    ],
    "verification": [
     "EC measurement or crust gone"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 7,
    "safety": [
     "Leaching without drainage raises the water table and brings salt back up."
    ],
@@ -756,8 +789,8 @@
    "materials": [
     "fork, broadfork or subsoiler"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": "Loosen to 25-30 cm depth",
+   "unit": "",
    "steps": [
     "Loosen the soil when moderately moist, not wet.",
     "Follow immediately with organic matter."
@@ -765,7 +798,7 @@
    "verification": [
     "Infiltration check"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 3,
    "phase": "A",
    "status": "pending_review",
    "source": "SRC-CASE"
@@ -790,15 +823,15 @@
    "materials": [
     "legume cover crop seed"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": 5,
+   "unit": "g legume seed per m2",
    "steps": [
     "Sow, grow, then cut and leave or dig in."
    ],
    "verification": [
     "Soil cover established"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 0,
    "phase": "B",
    "status": "pending_review",
    "source": "SRC-AGRI-GEN"
@@ -817,13 +850,13 @@
    "materials": [
     "shade cloth, mulch or nurse plants"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": "30-50% shade cloth or mulch cover over seedlings until established",
+   "unit": "",
    "steps": [
     "Protect seedlings during establishment."
    ],
    "verification": [],
-   "stabilization_days": null,
+   "stabilization_days": 0,
    "phase": "B",
    "status": "pending_review",
    "source": "SRC-CASE"
@@ -910,8 +943,8 @@
    ],
    "check": "Required waiting time after amendments has passed.",
    "mandatory": true,
-   "window_days": null,
-   "if_failed": "Window length not in KB. Ask administrator to add it."
+   "window_days": 3,
+   "if_failed": "Wait for the stabilization window to pass, then repeat."
   }
  ],
  "crops": [
@@ -943,9 +976,9 @@
    "feeder_class": "light",
    "role": "Pioneer crop; fixes nitrogen on poor land.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "2-4 cm",
+    "spacing": "10 cm in row, 40-50 cm between rows",
+    "method": "Direct sow into moist, prepared soil"
    },
    "care": {
     "diseases": [
@@ -957,7 +990,8 @@
     ],
     "controls": [
      "Neem-based spray"
-    ]
+    ],
+    "fertilizer": "Little nitrogen needed (fixes its own). Compost at bed prep; phosphorus if available."
    },
    "harvest": {
     "indicators": [
@@ -966,7 +1000,13 @@
     "method": "Hand-pick pods as they dry"
    },
    "status": "pending_review",
-   "source": "SRC-PRD"
+   "source": "SRC-PRD",
+   "phase_days": {
+    "P1": "3-7",
+    "P2": "20-25",
+    "P3": "20-30",
+    "P4": "7-10"
+   }
   },
   {
    "id": "CROP-SORGHUM",
@@ -996,9 +1036,9 @@
    "feeder_class": "moderate",
    "role": "Drought and marginal-soil tolerant staple grain.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "2-4 cm",
+    "spacing": "15-20 cm in row, 60-75 cm between rows",
+    "method": "Direct sow into prepared soil"
    },
    "care": {
     "diseases": [
@@ -1009,7 +1049,13 @@
      "Shoot fly",
      "Stem borer"
     ],
-    "controls": []
+    "controls": [
+     "Neem-based spray",
+     "Intercrop with cowpea to disrupt stem borer",
+     "Seed treatment with Trichoderma",
+     "Reflective ribbon against birds"
+    ],
+    "fertilizer": "Modest nitrogen and phosphorus; well-rotted compost at bed prep; light top-dress at knee-height stage."
    },
    "harvest": {
     "indicators": [
@@ -1018,7 +1064,13 @@
     "method": "Cut heads, dry before storage"
    },
    "status": "pending_review",
-   "source": "SRC-PRD"
+   "source": "SRC-PRD",
+   "phase_days": {
+    "P1": "5-10",
+    "P2": "30-40",
+    "P3": "30-40",
+    "P4": "10-14"
+   }
   },
   {
    "id": "CROP-PMILLET",
@@ -1049,9 +1101,9 @@
    "feeder_class": "light",
    "role": "Drought and low-fertility tolerant cereal.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "2-3 cm",
+    "spacing": "10-15 cm in row, 45-50 cm between rows",
+    "method": "Direct sow into prepared soil"
    },
    "care": {
     "diseases": [
@@ -1061,7 +1113,12 @@
     "pests": [
      "Stem borer"
     ],
-    "controls": []
+    "controls": [
+     "Clean or resistant seed",
+     "Remove infected plants early",
+     "Neem spray"
+    ],
+    "fertilizer": "Low demand; compost at bed prep and a small nitrogen top-dress at tillering."
    },
    "harvest": {
     "indicators": [
@@ -1070,7 +1127,13 @@
     "method": "Cut ear heads and dry"
    },
    "status": "pending_review",
-   "source": "SRC-PRD"
+   "source": "SRC-PRD",
+   "phase_days": {
+    "P1": "3-5",
+    "P2": "20-25",
+    "P3": "25-35",
+    "P4": "7-10"
+   }
   },
   {
    "id": "CROP-AMARANTH",
@@ -1097,16 +1160,25 @@
    "feeder_class": "light",
    "role": "Pioneer crop where soil test results are uncertain.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "0.5-1 cm (tiny seed; mix with sand)",
+    "spacing": "10-15 cm in row, 30-45 cm between rows; thin seedlings",
+    "method": "Broadcast or drill shallowly into fine, moist soil"
    },
    "care": {
-    "diseases": [],
+    "diseases": [
+     "Damping-off",
+     "Leaf spot",
+     "Root rot in wet soil"
+    ],
     "pests": [
      "Aphids"
     ],
-    "controls": []
+    "controls": [
+     "Neem spray",
+     "Avoid overwatering",
+     "Thin plants for airflow"
+    ],
+    "fertilizer": "Light feeder; compost at bed prep and a light nitrogen feed after the first leaf cut."
    },
    "harvest": {
     "indicators": [
@@ -1116,7 +1188,13 @@
     "method": "Cut leaves early or seed heads late"
    },
    "status": "pending_review",
-   "source": "SRC-PRD"
+   "source": "SRC-PRD",
+   "phase_days": {
+    "P1": "3-5",
+    "P2": "15-25",
+    "P3": "40-60 (grain)",
+    "P4": "7-10"
+   }
   },
   {
    "id": "CROP-RICE",
@@ -1134,25 +1212,50 @@
    ],
    "water": "high",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    100,
+    150
+   ],
    "feeder_class": "moderate",
    "role": "Wet-footed cereal for waterlogged land that cannot be fully drained.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "2-3 cm; transplant 2-3 seedlings per hill",
+    "spacing": "20 x 20 cm",
+    "method": "Transplant 20-30 day seedlings into puddled soil with shallow standing water"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Blast",
+     "Sheath blight",
+     "Bacterial leaf blight"
+    ],
+    "pests": [
+     "Stem borer",
+     "Brown planthopper"
+    ],
+    "controls": [
+     "Resistant varieties",
+     "Balanced nitrogen",
+     "Brief field drainage to disrupt pests",
+     "Neem spray"
+    ],
+    "fertilizer": "Compost at bed prep; split nitrogen at tillering and panicle initiation."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "80-85% of grains straw coloured",
+     "Grains hard"
+    ],
+    "method": "Drain field 7-10 days before; cut, dry, thresh"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-10",
+    "P2": "30-40",
+    "P3": "35-45",
+    "P4": "10-15"
+   }
   },
   {
    "id": "CROP-TARO",
@@ -1170,25 +1273,48 @@
    ],
    "water": "high",
    "light": "full to partial",
-   "duration_days": null,
+   "duration_days": [
+    180,
+    240
+   ],
    "feeder_class": "moderate",
    "role": "Wet-footed root crop.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "5-10 cm",
+    "spacing": "60 x 60 cm",
+    "method": "Plant corm pieces or suckers on wet ridges"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Taro leaf blight",
+     "Corm rot"
+    ],
+    "pests": [
+     "Aphids",
+     "Armyworm"
+    ],
+    "controls": [
+     "Remove infected leaves",
+     "Use disease-free planting material",
+     "Keep wide spacing"
+    ],
+    "fertilizer": "Compost-heavy; potassium-rich organic matter."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Leaves yellow and die back",
+     "Corms firm"
+    ],
+    "method": "Dig corms carefully; cure before storage"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "14-21",
+    "P2": "60-90",
+    "P3": "60-90",
+    "P4": "14-21"
+   }
   },
   {
    "id": "CROP-BARLEY",
@@ -1208,25 +1334,49 @@
    ],
    "water": "low-medium",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    90,
+    120
+   ],
    "feeder_class": "moderate",
    "role": "Salt-tolerant cereal.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "3-5 cm",
+    "spacing": "Drill in rows 20 cm apart",
+    "method": "Drill or broadcast and cover"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Powdery mildew",
+     "Net blotch",
+     "Rust"
+    ],
+    "pests": [
+     "Aphids",
+     "Armyworm"
+    ],
+    "controls": [
+     "Resistant varieties",
+     "Crop rotation",
+     "Neem spray"
+    ],
+    "fertilizer": "Moderate nitrogen, split; compost at bed prep; avoid chloride-heavy fertilizers."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Heads golden",
+     "Grains hard"
+    ],
+    "method": "Cut when dry, thresh, store below 12% moisture"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-10",
+    "P2": "30-40",
+    "P3": "30-40",
+    "P4": "10-14"
+   }
   },
   {
    "id": "CROP-PIGEONPEA",
@@ -1246,25 +1396,51 @@
    ],
    "water": "low",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    150,
+    180
+   ],
    "feeder_class": "light",
    "role": "Deep-rooted legume that helps recover compacted, depleted soil.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "3-5 cm",
+    "spacing": "30 cm in row, 75-90 cm between rows",
+    "method": "Direct sow into loosened soil"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Fusarium wilt",
+     "Sterility mosaic",
+     "Phytophthora blight"
+    ],
+    "pests": [
+     "Pod borer",
+     "Pod fly",
+     "Aphids"
+    ],
+    "controls": [
+     "Neem spray",
+     "Intercrop with cereals",
+     "Resistant varieties",
+     "Pheromone traps"
+    ],
+    "fertilizer": "Little nitrogen; phosphorus helpful; compost at bed prep."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Pods brown and dry",
+     "Seeds hard"
+    ],
+    "method": "Hand-pick or cut dry pods in passes; thresh"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-10",
+    "P2": "40-60",
+    "P3": "50-70",
+    "P4": "10-15"
+   }
   },
   {
    "id": "CROP-TOMATO",
@@ -1280,25 +1456,48 @@
    ],
    "water": "high",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    90,
+    120
+   ],
    "feeder_class": "heavy",
    "role": "Demonstrates the heavy-feeder safety filter. Excluded on depleted soil.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "0.5-1 cm in nursery; transplant at 5 cm",
+    "spacing": "45 x 60 cm",
+    "method": "Raise seedlings, then transplant"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Early blight",
+     "Late blight",
+     "Bacterial wilt"
+    ],
+    "pests": [
+     "Whitefly",
+     "Fruit borer"
+    ],
+    "controls": [
+     "Neem spray",
+     "Crop rotation",
+     "Stake and prune for airflow"
+    ],
+    "fertilizer": "Heavy feeder: rich compost plus balanced NPK, split through the season."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Fruit fully coloured and slightly firm"
+    ],
+    "method": "Hand-pick ripe fruit regularly"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-8",
+    "P2": "25-30",
+    "P3": "30-45",
+    "P4": "7-14"
+   }
   }
  ],
  "phases": {

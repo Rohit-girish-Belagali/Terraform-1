@@ -155,7 +155,14 @@
    "source": "SRC-CASE",
    "stress_tags": [
     "waterlogging"
-   ]
+   ],
+   "typical_estimates": {
+    "texture_class": "Clay / silty clay",
+    "drainage": "Very poor",
+    "organic_matter": "Moderate, partly decomposed",
+    "cec": "Moderate to high",
+    "ph_range": "5.5-6.5"
+   }
   }
  ],
  "rules": [
@@ -264,8 +271,8 @@
    "materials": [
     "channels or drains, raised beds"
    ],
-   "rate": null,
-   "unit": null,
+   "rate": "Channels about 30 cm wide and 30 cm deep, spaced 5-10 m apart, falling toward an outlet",
+   "unit": "",
    "steps": [
     "Dig channels from low patches toward an outlet.",
     "Do not plant until surface water is gone.",
@@ -276,7 +283,7 @@
     "Infiltration check",
     "Crumb test"
    ],
-   "stabilization_days": null,
+   "stabilization_days": 7,
    "phase": "A",
    "status": "pending_review",
    "source": "SRC-CASE"
@@ -337,25 +344,50 @@
    ],
    "water": "high",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    100,
+    150
+   ],
    "feeder_class": "moderate",
    "role": "Wet-footed cereal for waterlogged land that cannot be fully drained.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "2-3 cm; transplant 2-3 seedlings per hill",
+    "spacing": "20 x 20 cm",
+    "method": "Transplant 20-30 day seedlings into puddled soil with shallow standing water"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Blast",
+     "Sheath blight",
+     "Bacterial leaf blight"
+    ],
+    "pests": [
+     "Stem borer",
+     "Brown planthopper"
+    ],
+    "controls": [
+     "Resistant varieties",
+     "Balanced nitrogen",
+     "Brief field drainage to disrupt pests",
+     "Neem spray"
+    ],
+    "fertilizer": "Compost at bed prep; split nitrogen at tillering and panicle initiation."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "80-85% of grains straw coloured",
+     "Grains hard"
+    ],
+    "method": "Drain field 7-10 days before; cut, dry, thresh"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-10",
+    "P2": "30-40",
+    "P3": "35-45",
+    "P4": "10-15"
+   }
   },
   {
    "id": "CROP-TARO",
@@ -373,25 +405,48 @@
    ],
    "water": "high",
    "light": "full to partial",
-   "duration_days": null,
+   "duration_days": [
+    180,
+    240
+   ],
    "feeder_class": "moderate",
    "role": "Wet-footed root crop.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "5-10 cm",
+    "spacing": "60 x 60 cm",
+    "method": "Plant corm pieces or suckers on wet ridges"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Taro leaf blight",
+     "Corm rot"
+    ],
+    "pests": [
+     "Aphids",
+     "Armyworm"
+    ],
+    "controls": [
+     "Remove infected leaves",
+     "Use disease-free planting material",
+     "Keep wide spacing"
+    ],
+    "fertilizer": "Compost-heavy; potassium-rich organic matter."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Leaves yellow and die back",
+     "Corms firm"
+    ],
+    "method": "Dig corms carefully; cure before storage"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "14-21",
+    "P2": "60-90",
+    "P3": "60-90",
+    "P4": "14-21"
+   }
   },
   {
    "id": "CROP-TOMATO",
@@ -407,25 +462,48 @@
    ],
    "water": "high",
    "light": "full",
-   "duration_days": null,
+   "duration_days": [
+    90,
+    120
+   ],
    "feeder_class": "heavy",
    "role": "Demonstrates the heavy-feeder safety filter. Excluded on depleted soil.",
    "planting": {
-    "depth": null,
-    "spacing": null,
-    "note": "Not yet in KB."
+    "depth": "0.5-1 cm in nursery; transplant at 5 cm",
+    "spacing": "45 x 60 cm",
+    "method": "Raise seedlings, then transplant"
    },
    "care": {
-    "diseases": [],
-    "pests": [],
-    "controls": []
+    "diseases": [
+     "Early blight",
+     "Late blight",
+     "Bacterial wilt"
+    ],
+    "pests": [
+     "Whitefly",
+     "Fruit borer"
+    ],
+    "controls": [
+     "Neem spray",
+     "Crop rotation",
+     "Stake and prune for airflow"
+    ],
+    "fertilizer": "Heavy feeder: rich compost plus balanced NPK, split through the season."
    },
    "harvest": {
-    "indicators": [],
-    "method": null
+    "indicators": [
+     "Fruit fully coloured and slightly firm"
+    ],
+    "method": "Hand-pick ripe fruit regularly"
    },
    "status": "pending_review",
-   "source": "SRC-AGRI-GEN"
+   "source": "SRC-AGRI-GEN",
+   "phase_days": {
+    "P1": "5-8",
+    "P2": "25-30",
+    "P3": "30-45",
+    "P4": "7-14"
+   }
   }
  ],
  "phases": {

@@ -211,7 +211,7 @@ function v3(){ const ps=procedures(), area=parseFloat(S.plot);
      <div class="sub">${p.id} &middot; Targets: ${esc(p.targets.join(', '))} &middot; Materials: ${esc((p.materials||[]).join(', '))}</div>
      ${p.prerequisites?.length?ln('PREREQUISITES',esc(p.prerequisites.join('; '))):''}
      <ol>${p.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
-     ${p.rate==null?miss('no_rate')+(p.rate_note?ln('NOTE',esc(p.rate_note)):''):ln('QUANTITY',esc(p.rate+' '+p.unit)+(area>0?' &rarr; '+(p.rate*area).toFixed(1)+' total for '+area+' m2':''),'o')}
+     ${p.rate==null?miss('no_rate')+(p.rate_note?ln('NOTE',esc(p.rate_note)):''):ln('QUANTITY',esc((p.rate+' '+(p.unit||'')).trim())+(area>0&&typeof p.rate==='number'&&/per m2/.test(p.unit||'')?' &rarr; '+(p.rate*area).toFixed(1)+' '+esc(p.unit.split(' per m2')[0])+' total for '+area+' m2':''),'o')}
      ${p.safety?ln('SAFETY',esc(p.safety.join(' ')),'w'):''}${ln('VERIFY',esc((p.verification||[]).join('; ')||'none listed'))}</div>`; }).join(''); }).join('')+actions()); }
 
 // ---------- step 4 ----------
