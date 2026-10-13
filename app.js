@@ -80,7 +80,7 @@ function panel(n, body, stateOverride){
 }
 function reach(){ let r=1; for(let n=1;n<=9;n++){ if(!S.done[n]) break; r=n+1; } return Math.min(9,r); }
 function valid(n){ if(!S.an) return false;
-  if(n===1) return true; if(n===2) return S.an.archs.length>0; if(n===4) return gate().state!=='NOT_READY'; if(n===5) return !!S.crop; return !!S.crop; }
+  if(n===1||n===3) return true; if(n===2) return S.an.archs.length>0; if(n===4) return gate().state!=='NOT_READY'; if(n===5) return !!S.crop; return !!S.crop; }
 function complete(n){ if(valid(n)) S.done[n]=true; else for(let k=n;k<=9;k++) delete S.done[k]; }
 function inputChanged(){ S.done={}; S.seen={}; S.an=null; S.ready={}; S.crop=null; S.note=false; }
 
