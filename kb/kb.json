@@ -1,0 +1,140 @@
+{
+ "meta": {
+  "name": "TERRAFORM KB (final)",
+  "kb_version": "0.1.0-draft",
+  "updated": "2026-10-13",
+  "note": "Seed data. Every record is pending_review until an administrator approves it. Only approved records may be shown as verified recommendations. A null value means 'no verified data' and the system must show a missing-data message instead of inventing a number.",
+  "validation_statuses": [
+   "approved",
+   "pending_review",
+   "deprecated"
+  ],
+  "readiness_states": [
+   "NOT_READY",
+   "CONDITIONALLY_READY",
+   "READY"
+  ],
+  "water_confirm_features": [
+   "F-STANDING-WATER"
+  ],
+  "conflicts": [
+   [
+    "F-STANDING-WATER",
+    "F-CRACKED"
+   ],
+   [
+    "F-STANDING-WATER",
+    "F-RAIN-RARE"
+   ]
+  ],
+  "text_limit": 3000
+ },
+ "sources": [
+  {
+   "id": "SRC-CASE",
+   "title": "TERRAFORM Team Case Studies (AI Club, Sep 2026)",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-PRD",
+   "title": "TERRAFORM PRD",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-AGRI-GEN",
+   "title": "General agronomy references (to be cited by reviewer before approval)",
+   "type": "pending_citation"
+  }
+ ],
+ "toggles": [
+  {
+   "id": "T-WATER",
+   "label": "Water Source Nearby",
+   "sets": {
+    "water_access": "confirmed"
+   }
+  },
+  {
+   "id": "T-SLOPE",
+   "label": "Sloped Terrain",
+   "sets": {
+    "slope": true
+   }
+  },
+  {
+   "id": "T-ROCKY",
+   "label": "Rocky",
+   "sets": {
+    "rocky": true
+   }
+  },
+  {
+   "id": "T-SHADE",
+   "label": "Shaded",
+   "sets": {
+    "shaded": true
+   },
+   "cancels_features": [
+    "F-NO-CANOPY"
+   ]
+  },
+  {
+   "id": "T-RAIN",
+   "label": "Recent Rain",
+   "sets": {
+    "recent_rain": true
+   }
+  },
+  {
+   "id": "T-WIND",
+   "label": "Strong Wind",
+   "sets": {
+    "strong_wind": true
+   }
+  },
+  {
+   "id": "T-SALT-AIR",
+   "label": "Salty/Coastal Air",
+   "sets": {
+    "salt_air": true
+   },
+   "adds_features": [
+    "F-SALT-SMELL"
+   ]
+  }
+ ],
+ "missing_data_messages": {
+  "no_rate": "The Knowledge Base has no verified application rate for this treatment. No quantity will be suggested.",
+  "no_crop_duration": "The Knowledge Base has no verified growing duration for this crop.",
+  "no_planting_spec": "The Knowledge Base has no verified planting depth or spacing for this crop.",
+  "no_readiness_window": "The Knowledge Base has no verified stabilization window for this condition.",
+  "low_evidence": "Not enough evidence to classify this land. Please add a description, image or measurement."
+ },
+ "phases": {
+  "journey": [
+   {
+    "id": "P1",
+    "name": "Germination"
+   },
+   {
+    "id": "P2",
+    "name": "Vegetative Growth"
+   },
+   {
+    "id": "P3",
+    "name": "Reproductive & Canopy Development"
+   },
+   {
+    "id": "P4",
+    "name": "Pre-Harvest"
+   }
+  ],
+  "note": "Crop-specific durations come from each crop record. If duration_days is null, the Timeframe step must say the data is unavailable."
+ },
+ "features": [],
+ "archetypes": [],
+ "rules": [],
+ "procedures": [],
+ "readiness_criteria": [],
+ "crops": []
+}

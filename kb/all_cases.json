@@ -1,0 +1,1403 @@
+{
+ "meta": {
+  "name": "TERRAFORM KB - all cases",
+  "kb_version": "0.1.0-draft",
+  "updated": "2026-10-13",
+  "note": "Seed data. Every record is pending_review until an administrator approves it. Only approved records may be shown as verified recommendations. A null value means 'no verified data' and the system must show a missing-data message instead of inventing a number.",
+  "validation_statuses": [
+   "approved",
+   "pending_review",
+   "deprecated"
+  ],
+  "readiness_states": [
+   "NOT_READY",
+   "CONDITIONALLY_READY",
+   "READY"
+  ],
+  "water_confirm_features": [
+   "F-STANDING-WATER"
+  ],
+  "conflicts": [
+   [
+    "F-STANDING-WATER",
+    "F-CRACKED"
+   ],
+   [
+    "F-STANDING-WATER",
+    "F-RAIN-RARE"
+   ]
+  ],
+  "text_limit": 3000
+ },
+ "sources": [
+  {
+   "id": "SRC-CASE",
+   "title": "TERRAFORM Team Case Studies (AI Club, Sep 2026)",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-PRD",
+   "title": "TERRAFORM PRD",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-AGRI-GEN",
+   "title": "General agronomy references (to be cited by reviewer before approval)",
+   "type": "pending_citation"
+  }
+ ],
+ "features": [
+  {
+   "id": "F-CRACKED",
+   "label": "Cracked soil surface",
+   "kind": "visual",
+   "lexicon": "crack|plates|fissur"
+  },
+  {
+   "id": "F-LOOSE-DUST",
+   "label": "Loose soil or dust lifted by wind",
+   "kind": "visual",
+   "lexicon": "dust|wind[- ]?(blown|lifting)|dust|lifting loose|loose soil|erosion|eroding"
+  },
+  {
+   "id": "F-GRITTY",
+   "label": "Gritty, loose, sandy texture",
+   "kind": "text",
+   "lexicon": "grit|sandy|\\bsand\\b|beach"
+  },
+  {
+   "id": "F-NO-VEG",
+   "label": "No or very sparse vegetation",
+   "kind": "visual",
+   "lexicon": "no (visible )?(veg|plants|green)|barren|bare (land|plot|ground)|sparse|scrap of green|dead (veg|weeds)|brittle weeds"
+  },
+  {
+   "id": "F-STANDING-WATER",
+   "label": "Standing water or puddles",
+   "kind": "visual",
+   "lexicon": "standing (water|puddle)|puddle|pooling|submerged|flooded"
+  },
+  {
+   "id": "F-SOUR-SMELL",
+   "label": "Sour or musty soil smell",
+   "kind": "text",
+   "lexicon": "sour|musty|foul smell"
+  },
+  {
+   "id": "F-YELLOW-WEEDS",
+   "label": "Yellowing weeds with soft or rotting roots",
+   "kind": "visual",
+   "lexicon": "yellow|rotting roots|soft roots|wilting"
+  },
+  {
+   "id": "F-SLOW-DRAIN",
+   "label": "Drains slowly, stays wet after rain",
+   "kind": "text",
+   "lexicon": "slow(ly)? drain|drains slowly|stays wet|waterlog|poorly drain"
+  },
+  {
+   "id": "F-DARK-STICKY",
+   "label": "Dark, sticky clay",
+   "kind": "text",
+   "lexicon": "sticky|dark clay|heavy clay"
+  },
+  {
+   "id": "F-SALT-CRUST",
+   "label": "White or pale crust on surface",
+   "kind": "visual",
+   "lexicon": "white.{0,25}(crust|residue)|salt crust|crusty|crusted"
+  },
+  {
+   "id": "F-SALT-SMELL",
+   "label": "Salty air or smell",
+   "kind": "text",
+   "lexicon": "salt(y)? (smell|air|wind|spray)|smell of salt|salty"
+  },
+  {
+   "id": "F-STUNTED-BROWN",
+   "label": "Stunted, browning vegetation",
+   "kind": "visual",
+   "lexicon": "stunted|browning|scorched"
+  },
+  {
+   "id": "F-SEA-NEAR",
+   "label": "Sea or shoreline nearby",
+   "kind": "text",
+   "lexicon": "\\bsea\\b|shore|coast|ocean"
+  },
+  {
+   "id": "F-HARD-PACKED",
+   "label": "Hard-packed ground",
+   "kind": "text",
+   "lexicon": "hard[- ]packed|compact|hard ground|pressed[- ]down|rock[- ]hard"
+  },
+  {
+   "id": "F-SURFACE-POOLING",
+   "label": "Water pools on surface instead of soaking in",
+   "kind": "text",
+   "lexicon": "water (sits|pools)|pools on (the )?surface|doesn.t soak|not soak|poor infiltration"
+  },
+  {
+   "id": "F-BARE-PATCHES",
+   "label": "Bare patches",
+   "kind": "visual",
+   "lexicon": "bare (patch|dirt|spot)|worn (down )?to"
+  },
+  {
+   "id": "F-THIN-GRASS",
+   "label": "Thin, patchy, grazed grass",
+   "kind": "visual",
+   "lexicon": "thin|patchy|overgraz|grazed|grazing|pasture"
+  },
+  {
+   "id": "F-STUMPS",
+   "label": "Stumps, debris or vehicle tracks",
+   "kind": "visual",
+   "lexicon": "stump|debris|tracks|cleared|deforest|felled|logging"
+  },
+  {
+   "id": "F-NO-CANOPY",
+   "label": "No canopy or shade",
+   "kind": "visual",
+   "lexicon": "no (canopy|shade|trees)|exposed to (the )?sun|full sun|open to the sun|cleared"
+  },
+  {
+   "id": "F-HIGH-HEAT",
+   "label": "Daytime temperatures reported above 40 C",
+   "kind": "text",
+   "lexicon": "\\b4\\d ?\u00b0? ?c|scorching|extreme heat|very hot|intense heat"
+  },
+  {
+   "id": "F-RAIN-RARE",
+   "label": "Rainfall rare or unreliable",
+   "kind": "text",
+   "lexicon": "rain(fall)? (is )?(rare|unreliable|unpredictable|scarce)|rare.{0,30}rain|no rain|last rain"
+  }
+ ],
+ "toggles": [
+  {
+   "id": "T-WATER",
+   "label": "Water Source Nearby",
+   "sets": {
+    "water_access": "confirmed"
+   }
+  },
+  {
+   "id": "T-SLOPE",
+   "label": "Sloped Terrain",
+   "sets": {
+    "slope": true
+   }
+  },
+  {
+   "id": "T-ROCKY",
+   "label": "Rocky",
+   "sets": {
+    "rocky": true
+   }
+  },
+  {
+   "id": "T-SHADE",
+   "label": "Shaded",
+   "sets": {
+    "shaded": true
+   },
+   "cancels_features": [
+    "F-NO-CANOPY"
+   ]
+  },
+  {
+   "id": "T-RAIN",
+   "label": "Recent Rain",
+   "sets": {
+    "recent_rain": true
+   }
+  },
+  {
+   "id": "T-WIND",
+   "label": "Strong Wind",
+   "sets": {
+    "strong_wind": true
+   }
+  },
+  {
+   "id": "T-SALT-AIR",
+   "label": "Salty/Coastal Air",
+   "sets": {
+    "salt_air": true
+   },
+   "adds_features": [
+    "F-SALT-SMELL"
+   ]
+  }
+ ],
+ "archetypes": [
+  {
+   "id": "ARC-SANDY",
+   "name": "Sandy / Loamy Sand (Degraded)",
+   "criteria": "Gritty, loose texture; low cohesion; rapid drainage.",
+   "physical_profile": "Loose, particulate, low aggregate stability",
+   "core_gaps": [
+    "low water-holding capacity",
+    "low organic matter",
+    "low nutrient retention"
+   ],
+   "typical_estimates": {
+    "texture_class": "Sand / loamy sand",
+    "drainage": "Excessive",
+    "ph_range": null,
+    "organic_matter": "Low",
+    "cec": "Low"
+   },
+   "estimate_label": "estimate, not laboratory measurement",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN",
+   "stress_tags": [
+    "drought",
+    "low fertility"
+   ]
+  },
+  {
+   "id": "ARC-ARID",
+   "name": "Arid / Drought-Stressed",
+   "criteria": "Dry, low organic matter, poor moisture retention, unreliable rain.",
+   "variants": [
+    "cracked-compacted (retention dominant)",
+    "loose-eroding (wind erosion dominant)"
+   ],
+   "core_gaps": [
+    "water scarcity",
+    "wind erosion",
+    "poor structure"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "drought",
+    "heat",
+    "low fertility"
+   ]
+  },
+  {
+   "id": "ARC-WATERLOGGED",
+   "name": "Waterlogged / Poorly Drained",
+   "criteria": "Standing water or slow drainage; sour smell; oxygen-starved root zone.",
+   "variants": [
+    "recently flooded (days)",
+    "prolonged waterlogging",
+    "heavy slow-draining without visible pooling"
+   ],
+   "core_gaps": [
+    "drainage",
+    "root-zone oxygen",
+    "nutrient loss",
+    "disease risk"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "waterlogging"
+   ]
+  },
+  {
+   "id": "ARC-SALINE",
+   "name": "Saline / Salt-Affected",
+   "criteria": "Salt crust or salty air, stunted browning plants, coastal context.",
+   "variants": [
+    "visible crust",
+    "no crust but salty smell and stunting",
+    "salt spray without saline soil"
+   ],
+   "core_gaps": [
+    "salinity",
+    "wind exposure",
+    "low water retention if sandy"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "salinity"
+   ]
+  },
+  {
+   "id": "ARC-COMPACTED",
+   "name": "Compacted and Depleted",
+   "criteria": "Hard-packed ground, poor infiltration, bare or thin grazed vegetation, low organic matter.",
+   "variants": [
+    "uniform",
+    "uneven wear"
+   ],
+   "core_gaps": [
+    "compaction",
+    "poor infiltration",
+    "nutrient and organic matter depletion"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "low fertility"
+   ]
+  },
+  {
+   "id": "ARC-DISTURBED",
+   "name": "Disturbed, Compacted, Sun-Exposed",
+   "criteria": "Cleared land with tracks, stumps or debris; no canopy; compacted.",
+   "core_gaps": [
+    "compaction",
+    "heat and sun exposure",
+    "no surface cover"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "heat",
+    "low fertility"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "R-ARID-1",
+   "type": "diagnostic",
+   "archetype": "ARC-ARID",
+   "when": {
+    "all": [
+     "F-NO-VEG"
+    ],
+    "any": [
+     "F-CRACKED",
+     "F-RAIN-RARE",
+     "F-HIGH-HEAT"
+    ]
+   },
+   "concludes": "Drought stress with poor moisture retention",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-ARID-2",
+   "type": "diagnostic",
+   "archetype": "ARC-ARID",
+   "when": {
+    "all": [
+     "F-LOOSE-DUST"
+    ],
+    "any": [
+     "F-NO-VEG",
+     "F-GRITTY",
+     "F-CRACKED"
+    ]
+   },
+   "concludes": "Active wind erosion in addition to dryness",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-SANDY-1",
+   "type": "diagnostic",
+   "archetype": "ARC-SANDY",
+   "when": {
+    "all": [
+     "F-GRITTY"
+    ]
+   },
+   "concludes": "Sandy texture. Texture is not by itself degradation; confirm low organic matter before diagnosing degradation.",
+   "min_evidence": 1,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-WET-1",
+   "type": "diagnostic",
+   "archetype": "ARC-WATERLOGGED",
+   "when": {
+    "any": [
+     "F-STANDING-WATER",
+     "F-SLOW-DRAIN"
+    ],
+    "also_any": [
+     "F-SOUR-SMELL",
+     "F-YELLOW-WEEDS",
+     "F-DARK-STICKY"
+    ]
+   },
+   "concludes": "Waterlogging with root-zone oxygen stress",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-SALINE-1",
+   "type": "diagnostic",
+   "archetype": "ARC-SALINE",
+   "when": {
+    "any": [
+     "F-SALT-CRUST",
+     "F-SALT-SMELL"
+    ],
+    "also_any": [
+     "F-STUNTED-BROWN",
+     "F-SEA-NEAR"
+    ]
+   },
+   "concludes": "Probable salinity. Salinity can only be confirmed by an EC measurement.",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-COMP-1",
+   "type": "diagnostic",
+   "archetype": "ARC-COMPACTED",
+   "when": {
+    "any": [
+     "F-HARD-PACKED",
+     "F-SURFACE-POOLING"
+    ],
+    "also_any": [
+     "F-BARE-PATCHES",
+     "F-THIN-GRASS"
+    ]
+   },
+   "concludes": "Compaction with depletion from overuse",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-DIST-1",
+   "type": "diagnostic",
+   "archetype": "ARC-DISTURBED",
+   "when": {
+    "any": [
+     "F-STUMPS"
+    ],
+    "also_any": [
+     "F-NO-CANOPY",
+     "F-HARD-PACKED"
+    ]
+   },
+   "concludes": "Disturbed, compacted land with sun exposure as a separate stressor",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-WATER-SAFETY",
+   "legacy_name": "R14",
+   "type": "safety_filter",
+   "when": {
+    "water_access": [
+     "unknown",
+     "none"
+    ]
+   },
+   "effect": "Restrict crops to those with water_requirement 'low' or 'low-medium'.",
+   "configurable": true,
+   "status": "pending_review",
+   "condition": {
+    "water_access": [
+     "unknown",
+     "none"
+    ]
+   },
+   "effect_data": {
+    "require_water": [
+     "low",
+     "low-medium"
+    ]
+   }
+  },
+  {
+   "id": "R-HEAVY-FEEDER",
+   "legacy_name": "R13",
+   "type": "safety_filter",
+   "when": {
+    "deficiency_any": [
+     "low organic matter",
+     "nutrient depletion",
+     "low nutrient retention"
+    ]
+   },
+   "effect": "Exclude crops with feeder_class 'heavy' (for example tomato, cucumber).",
+   "configurable": true,
+   "status": "pending_review",
+   "condition": {
+    "archetype_stress_any": [
+     "low fertility"
+    ]
+   },
+   "effect_data": {
+    "exclude_feeder_class": [
+     "heavy"
+    ]
+   }
+  },
+  {
+   "id": "R-READINESS-GATE",
+   "legacy_name": "R9",
+   "type": "readiness",
+   "effect": "Planting is blocked until the readiness criteria for the diagnosed archetype are met. A missing result counts as not passed.",
+   "status": "pending_review"
+  },
+  {
+   "id": "R-MIXED",
+   "type": "combination",
+   "effect": "More than one archetype may be returned when each meets its min_evidence. Never force a single label.",
+   "status": "pending_review"
+  },
+  {
+   "id": "R-NO-ESTIMATE-AS-FACT",
+   "type": "integrity",
+   "effect": "Properties inferred from text or image are labelled 'estimate'. Only user-supplied lab values may be labelled 'measured'.",
+   "status": "pending_review"
+  }
+ ],
+ "procedures": [
+  {
+   "id": "PROC-ORG-MATTER",
+   "name": "Compost / well-rotted manure incorporation",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "targets": [
+    "low organic matter",
+    "low water retention",
+    "nutrient depletion"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "compost or well-rotted manure"
+   ],
+   "rate": null,
+   "unit": "kg per m2",
+   "rate_note": "No verified rate in KB. System must show missing-data message until a reviewer adds one.",
+   "steps": [
+    "Spread evenly over the plot.",
+    "Incorporate into the topsoil.",
+    "Water lightly if water is available."
+   ],
+   "verification": [
+    "Crumb structure test"
+   ],
+   "stabilization_days": null,
+   "safety": [
+    "Use fully rotted material only."
+   ],
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "PROC-MULCH",
+   "name": "Organic mulch cover",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-SALINE",
+    "ARC-DISTURBED"
+   ],
+   "targets": [
+    "moisture loss",
+    "surface protection",
+    "wind erosion"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "straw, dry grass or crop residue"
+   ],
+   "rate": null,
+   "unit": "cm depth",
+   "steps": [
+    "Apply after amendments are incorporated.",
+    "Keep mulch in place against wind (anchor or wet down)."
+   ],
+   "verification": [
+    "Soil under mulch stays visibly moist"
+   ],
+   "stabilization_days": null,
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "PROC-BIOCHAR",
+   "name": "Biochar incorporation",
+   "applies_to": [
+    "ARC-SANDY"
+   ],
+   "targets": [
+    "low nutrient retention",
+    "low water retention"
+   ],
+   "prerequisites": [
+    "PROC-ORG-MATTER"
+   ],
+   "materials": [
+    "biochar, pre-charged with compost"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Mix with compost before applying."
+   ],
+   "verification": [],
+   "stabilization_days": null,
+   "phase": "B",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "PROC-WINDBREAK",
+   "name": "Windbreak and ground cover",
+   "applies_to": [
+    "ARC-ARID",
+    "ARC-SALINE",
+    "ARC-SANDY"
+   ],
+   "targets": [
+    "wind erosion",
+    "wind damage"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "tall hardy plants, brush or woven barriers"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Place barriers across the prevailing wind direction.",
+    "Cover bare patches before planting."
+   ],
+   "verification": [
+    "Visible dust movement reduced"
+   ],
+   "stabilization_days": null,
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-CASE"
+  },
+  {
+   "id": "PROC-DRAINAGE",
+   "name": "Drainage correction",
+   "applies_to": [
+    "ARC-WATERLOGGED"
+   ],
+   "targets": [
+    "standing water",
+    "slow drainage"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "channels or drains, raised beds"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Dig channels from low patches toward an outlet.",
+    "Do not plant until surface water is gone.",
+    "Let soil dry until it crumbles rather than smears."
+   ],
+   "verification": [
+    "No standing water",
+    "Infiltration check",
+    "Crumb test"
+   ],
+   "stabilization_days": null,
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-CASE"
+  },
+  {
+   "id": "PROC-LEACH",
+   "name": "Salinity leaching",
+   "applies_to": [
+    "ARC-SALINE"
+   ],
+   "targets": [
+    "salinity"
+   ],
+   "prerequisites": [
+    "Confirmed low-salt water source",
+    "Confirmed drainage out of the root zone"
+   ],
+   "materials": [
+    "low-salt water"
+   ],
+   "rate": null,
+   "unit": "mm of water",
+   "rate_note": "Depends on measured EC. Do not recommend without an EC reading and a water-source check.",
+   "steps": [
+    "Flush with low-salt water only if water and drainage are confirmed."
+   ],
+   "verification": [
+    "EC measurement or crust gone"
+   ],
+   "stabilization_days": null,
+   "safety": [
+    "Leaching without drainage raises the water table and brings salt back up."
+   ],
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "PROC-DECOMPACT",
+   "name": "Decompaction and aeration",
+   "applies_to": [
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "targets": [
+    "compaction",
+    "poor infiltration"
+   ],
+   "prerequisites": [
+    "Soil not saturated"
+   ],
+   "materials": [
+    "fork, broadfork or subsoiler"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Loosen the soil when moderately moist, not wet.",
+    "Follow immediately with organic matter."
+   ],
+   "verification": [
+    "Infiltration check"
+   ],
+   "stabilization_days": null,
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-CASE"
+  },
+  {
+   "id": "PROC-COVER-CROP",
+   "name": "Cover crop / green manure",
+   "applies_to": [
+    "ARC-COMPACTED",
+    "ARC-DISTURBED",
+    "ARC-ARID",
+    "ARC-SANDY"
+   ],
+   "targets": [
+    "nutrient depletion",
+    "bare soil",
+    "organic matter"
+   ],
+   "prerequisites": [
+    "PROC-DECOMPACT or PROC-ORG-MATTER where relevant"
+   ],
+   "materials": [
+    "legume cover crop seed"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Sow, grow, then cut and leave or dig in."
+   ],
+   "verification": [
+    "Soil cover established"
+   ],
+   "stabilization_days": null,
+   "phase": "B",
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "PROC-SHADE",
+   "name": "Temporary shade or surface protection",
+   "applies_to": [
+    "ARC-DISTURBED",
+    "ARC-ARID"
+   ],
+   "targets": [
+    "heat exposure"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "shade cloth, mulch or nurse plants"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Protect seedlings during establishment."
+   ],
+   "verification": [],
+   "stabilization_days": null,
+   "phase": "B",
+   "status": "pending_review",
+   "source": "SRC-CASE"
+  }
+ ],
+ "readiness_criteria": [
+  {
+   "id": "RC-CRUMB",
+   "name": "Crumb structure test",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED",
+    "ARC-WATERLOGGED"
+   ],
+   "check": "A handful of soil holds together and breaks into crumbs rather than falling apart as dust or smearing as paste.",
+   "mandatory": true,
+   "if_failed": "Add organic matter or let soil dry, then repeat."
+  },
+  {
+   "id": "RC-INFIL",
+   "name": "Infiltration check",
+   "applies_to": [
+    "ARC-WATERLOGGED",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "check": "Water poured on the surface soaks in without pooling.",
+   "mandatory": true,
+   "if_failed": "Repeat drainage or decompaction."
+  },
+  {
+   "id": "RC-NOPOOL",
+   "name": "No standing water",
+   "applies_to": [
+    "ARC-WATERLOGGED"
+   ],
+   "check": "No standing puddles on the plot.",
+   "mandatory": true,
+   "if_failed": "Continue drainage correction."
+  },
+  {
+   "id": "RC-MOIST",
+   "name": "Moisture retention",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID"
+   ],
+   "check": "Soil stays damp below the surface after watering.",
+   "mandatory": true,
+   "if_failed": "Add organic matter and mulch."
+  },
+  {
+   "id": "RC-DUST",
+   "name": "Surface stability",
+   "applies_to": [
+    "ARC-ARID",
+    "ARC-SANDY",
+    "ARC-SALINE"
+   ],
+   "check": "Wind no longer lifts loose soil from the surface.",
+   "mandatory": true,
+   "if_failed": "Add windbreak or ground cover."
+  },
+  {
+   "id": "RC-SALT",
+   "name": "Salt crust cleared",
+   "applies_to": [
+    "ARC-SALINE"
+   ],
+   "check": "No visible crust and a measured EC reading is available.",
+   "mandatory": true,
+   "if_failed": "Provide an EC reading or continue salinity management."
+  },
+  {
+   "id": "RC-STAB",
+   "name": "Stabilization window",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "check": "Required waiting time after amendments has passed.",
+   "mandatory": true,
+   "window_days": null,
+   "if_failed": "Window length not in KB. Ask administrator to add it."
+  }
+ ],
+ "crops": [
+  {
+   "id": "CROP-COWPEA",
+   "name": "Cowpea / Black-eyed bean",
+   "scientific": "Vigna unguiculata",
+   "category": "Legume",
+   "soil_compat": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-DISTURBED"
+   ],
+   "tolerates": [
+    "drought",
+    "heat",
+    "low fertility"
+   ],
+   "avoid": [
+    "waterlogging",
+    "salinity"
+   ],
+   "water": "low-medium",
+   "light": "full",
+   "duration_days": [
+    60,
+    75
+   ],
+   "feeder_class": "light",
+   "role": "Pioneer crop; fixes nitrogen on poor land.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [
+     "Fusarium wilt"
+    ],
+    "pests": [
+     "Aphids",
+     "Pod borers"
+    ],
+    "controls": [
+     "Neem-based spray"
+    ]
+   },
+   "harvest": {
+    "indicators": [
+     "Pods dry and yellow-brown"
+    ],
+    "method": "Hand-pick pods as they dry"
+   },
+   "status": "pending_review",
+   "source": "SRC-PRD"
+  },
+  {
+   "id": "CROP-SORGHUM",
+   "name": "Sorghum",
+   "scientific": "Sorghum bicolor",
+   "category": "Cereal / dryland grain",
+   "soil_compat": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "tolerates": [
+    "drought",
+    "heat",
+    "marginal soil",
+    "some waterlogging",
+    "moderate salinity"
+   ],
+   "avoid": [],
+   "water": "low",
+   "light": "full",
+   "duration_days": [
+    90,
+    120
+   ],
+   "feeder_class": "moderate",
+   "role": "Drought and marginal-soil tolerant staple grain.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [
+     "Grain mold",
+     "Anthracnose"
+    ],
+    "pests": [
+     "Shoot fly",
+     "Stem borer"
+    ],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [
+     "Grain hard, heads mature"
+    ],
+    "method": "Cut heads, dry before storage"
+   },
+   "status": "pending_review",
+   "source": "SRC-PRD"
+  },
+  {
+   "id": "CROP-PMILLET",
+   "name": "Pearl millet",
+   "scientific": "Pennisetum glaucum",
+   "category": "Cereal / dryland grain",
+   "soil_compat": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-SALINE",
+    "ARC-DISTURBED"
+   ],
+   "tolerates": [
+    "drought",
+    "heat",
+    "low fertility",
+    "some salinity"
+   ],
+   "avoid": [
+    "waterlogging"
+   ],
+   "water": "low",
+   "light": "full",
+   "duration_days": [
+    65,
+    90
+   ],
+   "feeder_class": "light",
+   "role": "Drought and low-fertility tolerant cereal.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [
+     "Downy mildew",
+     "Ergot"
+    ],
+    "pests": [
+     "Stem borer"
+    ],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [
+     "Ear heads dry, grains hard"
+    ],
+    "method": "Cut ear heads and dry"
+   },
+   "status": "pending_review",
+   "source": "SRC-PRD"
+  },
+  {
+   "id": "CROP-AMARANTH",
+   "name": "Amaranth",
+   "scientific": "Amaranthus spp.",
+   "category": "Grain / leafy dual-purpose",
+   "soil_compat": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-DISTURBED"
+   ],
+   "tolerates": [
+    "drought",
+    "heat"
+   ],
+   "avoid": [],
+   "water": "low-medium",
+   "light": "full",
+   "duration_days": [
+    30,
+    40
+   ],
+   "duration_note": "Leafy harvest 30-40 days; grain harvest 90-110 days.",
+   "feeder_class": "light",
+   "role": "Pioneer crop where soil test results are uncertain.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [
+     "Aphids"
+    ],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [
+     "Leaves tender (leafy)",
+     "Seed heads dry (grain)"
+    ],
+    "method": "Cut leaves early or seed heads late"
+   },
+   "status": "pending_review",
+   "source": "SRC-PRD"
+  },
+  {
+   "id": "CROP-RICE",
+   "name": "Rice (paddy)",
+   "scientific": "Oryza sativa",
+   "category": "Cereal / wetland",
+   "soil_compat": [
+    "ARC-WATERLOGGED"
+   ],
+   "tolerates": [
+    "waterlogging"
+   ],
+   "avoid": [
+    "drought"
+   ],
+   "water": "high",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "moderate",
+   "role": "Wet-footed cereal for waterlogged land that cannot be fully drained.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-TARO",
+   "name": "Taro",
+   "scientific": "Colocasia esculenta",
+   "category": "Root / tuber",
+   "soil_compat": [
+    "ARC-WATERLOGGED"
+   ],
+   "tolerates": [
+    "waterlogging"
+   ],
+   "avoid": [
+    "drought"
+   ],
+   "water": "high",
+   "light": "full to partial",
+   "duration_days": null,
+   "feeder_class": "moderate",
+   "role": "Wet-footed root crop.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-BARLEY",
+   "name": "Barley",
+   "scientific": "Hordeum vulgare",
+   "category": "Cereal",
+   "soil_compat": [
+    "ARC-SALINE",
+    "ARC-SANDY"
+   ],
+   "tolerates": [
+    "salinity",
+    "drought"
+   ],
+   "avoid": [
+    "waterlogging"
+   ],
+   "water": "low-medium",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "moderate",
+   "role": "Salt-tolerant cereal.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-PIGEONPEA",
+   "name": "Pigeon pea",
+   "scientific": "Cajanus cajan",
+   "category": "Legume",
+   "soil_compat": [
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "tolerates": [
+    "drought",
+    "compaction (deep roots)"
+   ],
+   "avoid": [
+    "waterlogging"
+   ],
+   "water": "low",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "light",
+   "role": "Deep-rooted legume that helps recover compacted, depleted soil.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-TOMATO",
+   "name": "Tomato",
+   "scientific": "Solanum lycopersicum",
+   "category": "Vegetable",
+   "soil_compat": [],
+   "tolerates": [],
+   "avoid": [
+    "drought",
+    "low fertility",
+    "salinity"
+   ],
+   "water": "high",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "heavy",
+   "role": "Demonstrates the heavy-feeder safety filter. Excluded on depleted soil.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  }
+ ],
+ "phases": {
+  "journey": [
+   {
+    "id": "P1",
+    "name": "Germination"
+   },
+   {
+    "id": "P2",
+    "name": "Vegetative Growth"
+   },
+   {
+    "id": "P3",
+    "name": "Reproductive & Canopy Development"
+   },
+   {
+    "id": "P4",
+    "name": "Pre-Harvest"
+   }
+  ],
+  "note": "Crop-specific durations come from each crop record. If duration_days is null, the Timeframe step must say the data is unavailable."
+ },
+ "missing_data_messages": {
+  "no_rate": "The Knowledge Base has no verified application rate for this treatment. No quantity will be suggested.",
+  "no_crop_duration": "The Knowledge Base has no verified growing duration for this crop.",
+  "no_planting_spec": "The Knowledge Base has no verified planting depth or spacing for this crop.",
+  "no_readiness_window": "The Knowledge Base has no verified stabilization window for this condition.",
+  "low_evidence": "Not enough evidence to classify this land. Please add a description, image or measurement."
+ },
+ "scenarios": [
+  {
+   "id": "SC-1",
+   "name": "Arid Wasteland",
+   "expect_archetypes": [
+    "ARC-ARID",
+    "ARC-SANDY"
+   ],
+   "expect_features": [
+    "F-CRACKED",
+    "F-LOOSE-DUST",
+    "F-NO-VEG",
+    "F-HIGH-HEAT",
+    "F-RAIN-RARE"
+   ]
+  },
+  {
+   "id": "SC-2",
+   "name": "Flood-Damaged Wetland",
+   "expect_archetypes": [
+    "ARC-WATERLOGGED"
+   ],
+   "expect_features": [
+    "F-DARK-STICKY",
+    "F-STANDING-WATER",
+    "F-SOUR-SMELL",
+    "F-YELLOW-WEEDS",
+    "F-SLOW-DRAIN"
+   ]
+  },
+  {
+   "id": "SC-3",
+   "name": "Coastal Saline Land",
+   "expect_archetypes": [
+    "ARC-SALINE",
+    "ARC-SANDY"
+   ],
+   "expect_features": [
+    "F-GRITTY",
+    "F-SALT-CRUST",
+    "F-SALT-SMELL",
+    "F-STUNTED-BROWN",
+    "F-SEA-NEAR"
+   ]
+  },
+  {
+   "id": "SC-4",
+   "name": "Overgrazed Pastureland",
+   "expect_archetypes": [
+    "ARC-COMPACTED"
+   ],
+   "expect_features": [
+    "F-HARD-PACKED",
+    "F-SURFACE-POOLING",
+    "F-BARE-PATCHES",
+    "F-THIN-GRASS"
+   ]
+  },
+  {
+   "id": "SC-5",
+   "name": "Post-Deforestation Cleared Land",
+   "expect_archetypes": [
+    "ARC-DISTURBED"
+   ],
+   "expect_features": [
+    "F-STUMPS",
+    "F-NO-CANOPY",
+    "F-HARD-PACKED"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,459 @@
+{
+ "meta": {
+  "name": "TERRAFORM KB - case2_wetland",
+  "kb_version": "0.1.0-draft",
+  "updated": "2026-10-13",
+  "note": "Seed data. Every record is pending_review until an administrator approves it. Only approved records may be shown as verified recommendations. A null value means 'no verified data' and the system must show a missing-data message instead of inventing a number.",
+  "validation_statuses": [
+   "approved",
+   "pending_review",
+   "deprecated"
+  ],
+  "readiness_states": [
+   "NOT_READY",
+   "CONDITIONALLY_READY",
+   "READY"
+  ],
+  "water_confirm_features": [
+   "F-STANDING-WATER"
+  ],
+  "conflicts": [
+   [
+    "F-STANDING-WATER",
+    "F-CRACKED"
+   ],
+   [
+    "F-STANDING-WATER",
+    "F-RAIN-RARE"
+   ]
+  ],
+  "text_limit": 3000
+ },
+ "sources": [
+  {
+   "id": "SRC-CASE",
+   "title": "TERRAFORM Team Case Studies (AI Club, Sep 2026)",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-PRD",
+   "title": "TERRAFORM PRD",
+   "type": "internal"
+  },
+  {
+   "id": "SRC-AGRI-GEN",
+   "title": "General agronomy references (to be cited by reviewer before approval)",
+   "type": "pending_citation"
+  }
+ ],
+ "features": [
+  {
+   "id": "F-STANDING-WATER",
+   "label": "Standing water or puddles",
+   "kind": "visual",
+   "lexicon": "standing (water|puddle)|puddle|pooling|submerged|flooded"
+  },
+  {
+   "id": "F-SOUR-SMELL",
+   "label": "Sour or musty soil smell",
+   "kind": "text",
+   "lexicon": "sour|musty|foul smell"
+  },
+  {
+   "id": "F-YELLOW-WEEDS",
+   "label": "Yellowing weeds with soft or rotting roots",
+   "kind": "visual",
+   "lexicon": "yellow|rotting roots|soft roots|wilting"
+  },
+  {
+   "id": "F-SLOW-DRAIN",
+   "label": "Drains slowly, stays wet after rain",
+   "kind": "text",
+   "lexicon": "slow(ly)? drain|drains slowly|stays wet|waterlog|poorly drain"
+  },
+  {
+   "id": "F-DARK-STICKY",
+   "label": "Dark, sticky clay",
+   "kind": "text",
+   "lexicon": "sticky|dark clay|heavy clay"
+  }
+ ],
+ "toggles": [
+  {
+   "id": "T-WATER",
+   "label": "Water Source Nearby",
+   "sets": {
+    "water_access": "confirmed"
+   }
+  },
+  {
+   "id": "T-SLOPE",
+   "label": "Sloped Terrain",
+   "sets": {
+    "slope": true
+   }
+  },
+  {
+   "id": "T-ROCKY",
+   "label": "Rocky",
+   "sets": {
+    "rocky": true
+   }
+  },
+  {
+   "id": "T-SHADE",
+   "label": "Shaded",
+   "sets": {
+    "shaded": true
+   },
+   "cancels_features": [
+    "F-NO-CANOPY"
+   ]
+  },
+  {
+   "id": "T-RAIN",
+   "label": "Recent Rain",
+   "sets": {
+    "recent_rain": true
+   }
+  },
+  {
+   "id": "T-WIND",
+   "label": "Strong Wind",
+   "sets": {
+    "strong_wind": true
+   }
+  },
+  {
+   "id": "T-SALT-AIR",
+   "label": "Salty/Coastal Air",
+   "sets": {
+    "salt_air": true
+   },
+   "adds_features": [
+    "F-SALT-SMELL"
+   ]
+  }
+ ],
+ "archetypes": [
+  {
+   "id": "ARC-WATERLOGGED",
+   "name": "Waterlogged / Poorly Drained",
+   "criteria": "Standing water or slow drainage; sour smell; oxygen-starved root zone.",
+   "variants": [
+    "recently flooded (days)",
+    "prolonged waterlogging",
+    "heavy slow-draining without visible pooling"
+   ],
+   "core_gaps": [
+    "drainage",
+    "root-zone oxygen",
+    "nutrient loss",
+    "disease risk"
+   ],
+   "status": "pending_review",
+   "source": "SRC-CASE",
+   "stress_tags": [
+    "waterlogging"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "R-WET-1",
+   "type": "diagnostic",
+   "archetype": "ARC-WATERLOGGED",
+   "when": {
+    "any": [
+     "F-STANDING-WATER",
+     "F-SLOW-DRAIN"
+    ],
+    "also_any": [
+     "F-SOUR-SMELL",
+     "F-YELLOW-WEEDS",
+     "F-DARK-STICKY"
+    ]
+   },
+   "concludes": "Waterlogging with root-zone oxygen stress",
+   "min_evidence": 2,
+   "status": "pending_review"
+  },
+  {
+   "id": "R-WATER-SAFETY",
+   "legacy_name": "R14",
+   "type": "safety_filter",
+   "when": {
+    "water_access": [
+     "unknown",
+     "none"
+    ]
+   },
+   "effect": "Restrict crops to those with water_requirement 'low' or 'low-medium'.",
+   "configurable": true,
+   "status": "pending_review",
+   "condition": {
+    "water_access": [
+     "unknown",
+     "none"
+    ]
+   },
+   "effect_data": {
+    "require_water": [
+     "low",
+     "low-medium"
+    ]
+   }
+  },
+  {
+   "id": "R-HEAVY-FEEDER",
+   "legacy_name": "R13",
+   "type": "safety_filter",
+   "when": {
+    "deficiency_any": [
+     "low organic matter",
+     "nutrient depletion",
+     "low nutrient retention"
+    ]
+   },
+   "effect": "Exclude crops with feeder_class 'heavy' (for example tomato, cucumber).",
+   "configurable": true,
+   "status": "pending_review",
+   "condition": {
+    "archetype_stress_any": [
+     "low fertility"
+    ]
+   },
+   "effect_data": {
+    "exclude_feeder_class": [
+     "heavy"
+    ]
+   }
+  },
+  {
+   "id": "R-READINESS-GATE",
+   "legacy_name": "R9",
+   "type": "readiness",
+   "effect": "Planting is blocked until the readiness criteria for the diagnosed archetype are met. A missing result counts as not passed.",
+   "status": "pending_review"
+  },
+  {
+   "id": "R-MIXED",
+   "type": "combination",
+   "effect": "More than one archetype may be returned when each meets its min_evidence. Never force a single label.",
+   "status": "pending_review"
+  },
+  {
+   "id": "R-NO-ESTIMATE-AS-FACT",
+   "type": "integrity",
+   "effect": "Properties inferred from text or image are labelled 'estimate'. Only user-supplied lab values may be labelled 'measured'.",
+   "status": "pending_review"
+  }
+ ],
+ "procedures": [
+  {
+   "id": "PROC-DRAINAGE",
+   "name": "Drainage correction",
+   "applies_to": [
+    "ARC-WATERLOGGED"
+   ],
+   "targets": [
+    "standing water",
+    "slow drainage"
+   ],
+   "prerequisites": [],
+   "materials": [
+    "channels or drains, raised beds"
+   ],
+   "rate": null,
+   "unit": null,
+   "steps": [
+    "Dig channels from low patches toward an outlet.",
+    "Do not plant until surface water is gone.",
+    "Let soil dry until it crumbles rather than smears."
+   ],
+   "verification": [
+    "No standing water",
+    "Infiltration check",
+    "Crumb test"
+   ],
+   "stabilization_days": null,
+   "phase": "A",
+   "status": "pending_review",
+   "source": "SRC-CASE"
+  }
+ ],
+ "readiness_criteria": [
+  {
+   "id": "RC-CRUMB",
+   "name": "Crumb structure test",
+   "applies_to": [
+    "ARC-SANDY",
+    "ARC-ARID",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED",
+    "ARC-WATERLOGGED"
+   ],
+   "check": "A handful of soil holds together and breaks into crumbs rather than falling apart as dust or smearing as paste.",
+   "mandatory": true,
+   "if_failed": "Add organic matter or let soil dry, then repeat."
+  },
+  {
+   "id": "RC-INFIL",
+   "name": "Infiltration check",
+   "applies_to": [
+    "ARC-WATERLOGGED",
+    "ARC-COMPACTED",
+    "ARC-DISTURBED"
+   ],
+   "check": "Water poured on the surface soaks in without pooling.",
+   "mandatory": true,
+   "if_failed": "Repeat drainage or decompaction."
+  },
+  {
+   "id": "RC-NOPOOL",
+   "name": "No standing water",
+   "applies_to": [
+    "ARC-WATERLOGGED"
+   ],
+   "check": "No standing puddles on the plot.",
+   "mandatory": true,
+   "if_failed": "Continue drainage correction."
+  }
+ ],
+ "crops": [
+  {
+   "id": "CROP-RICE",
+   "name": "Rice (paddy)",
+   "scientific": "Oryza sativa",
+   "category": "Cereal / wetland",
+   "soil_compat": [
+    "ARC-WATERLOGGED"
+   ],
+   "tolerates": [
+    "waterlogging"
+   ],
+   "avoid": [
+    "drought"
+   ],
+   "water": "high",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "moderate",
+   "role": "Wet-footed cereal for waterlogged land that cannot be fully drained.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-TARO",
+   "name": "Taro",
+   "scientific": "Colocasia esculenta",
+   "category": "Root / tuber",
+   "soil_compat": [
+    "ARC-WATERLOGGED"
+   ],
+   "tolerates": [
+    "waterlogging"
+   ],
+   "avoid": [
+    "drought"
+   ],
+   "water": "high",
+   "light": "full to partial",
+   "duration_days": null,
+   "feeder_class": "moderate",
+   "role": "Wet-footed root crop.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  },
+  {
+   "id": "CROP-TOMATO",
+   "name": "Tomato",
+   "scientific": "Solanum lycopersicum",
+   "category": "Vegetable",
+   "soil_compat": [],
+   "tolerates": [],
+   "avoid": [
+    "drought",
+    "low fertility",
+    "salinity"
+   ],
+   "water": "high",
+   "light": "full",
+   "duration_days": null,
+   "feeder_class": "heavy",
+   "role": "Demonstrates the heavy-feeder safety filter. Excluded on depleted soil.",
+   "planting": {
+    "depth": null,
+    "spacing": null,
+    "note": "Not yet in KB."
+   },
+   "care": {
+    "diseases": [],
+    "pests": [],
+    "controls": []
+   },
+   "harvest": {
+    "indicators": [],
+    "method": null
+   },
+   "status": "pending_review",
+   "source": "SRC-AGRI-GEN"
+  }
+ ],
+ "phases": {
+  "journey": [
+   {
+    "id": "P1",
+    "name": "Germination"
+   },
+   {
+    "id": "P2",
+    "name": "Vegetative Growth"
+   },
+   {
+    "id": "P3",
+    "name": "Reproductive & Canopy Development"
+   },
+   {
+    "id": "P4",
+    "name": "Pre-Harvest"
+   }
+  ],
+  "note": "Crop-specific durations come from each crop record. If duration_days is null, the Timeframe step must say the data is unavailable."
+ },
+ "missing_data_messages": {
+  "no_rate": "The Knowledge Base has no verified application rate for this treatment. No quantity will be suggested.",
+  "no_crop_duration": "The Knowledge Base has no verified growing duration for this crop.",
+  "no_planting_spec": "The Knowledge Base has no verified planting depth or spacing for this crop.",
+  "no_readiness_window": "The Knowledge Base has no verified stabilization window for this condition.",
+  "low_evidence": "Not enough evidence to classify this land. Please add a description, image or measurement."
+ }
+}
